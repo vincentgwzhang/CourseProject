@@ -11,12 +11,16 @@
       href="#"
       class="list-group-item clearfix"
       *ngFor="let recipe of recipes">
-      <div class="pull-left">
-        <h4 class="list-group-item-primary">{{recipe.name}}</h4>
-        <p class="list-group-item-info">{{recipe.description}}</p>
-      </div>
-      <div class="pull-right">
-        <img [src]="recipe.imagePath" alt="" style="max-height: 50px;" />
+      <div class="card">
+        <div class="card-horizontal">
+          <div class="card-body">
+            <h5 class="card-title">{{recipe.name}}</h5>
+            <p class="card-text">{{recipe.description}}</p>
+          </div>
+          <div>
+            <img class="item-image" [src]="recipe.imagePath" alt="{{recipe.name}}">
+          </div>
+        </div>
       </div>
     </a>
     <app-recipe-item></app-recipe-item>
