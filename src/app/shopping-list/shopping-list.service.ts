@@ -22,5 +22,10 @@ export class ShoppingListService {
     this.onIngredientEmitter.emit(this._ingredients.slice());
   }
 
+  appendRecipeToList(ingredientList: Ingredient[]) : void {
+    this._ingredients.push(...ingredientList);
+    this.onIngredientEmitter.emit(this._ingredients.slice());
+  }
+
   constructor() { }
 }
