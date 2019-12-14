@@ -1,5 +1,6 @@
 import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {element} from "protractor";
+import {LoggingService} from "../logging.service";
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   private _item1_active: boolean;
   private _item2_active: boolean;
 
-  constructor() {
+  constructor(private loggingService: LoggingService) {
     this._item1_active = true;
     this._item2_active = false;
   }
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
       this._item1_active = false;
       this._item2_active = true;
     }
+    this.loggingService.info("Select change");
     this.featureSelected.emit(feature);
   }
 
