@@ -6,11 +6,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" [ngClass]="{'activeMenu': item1_active}">
-        <a class="nav-link" href="#" (click)="onSelect('recipe', $event)" id="nav-link-1">Recipes</a>
+      <li class="nav-item" routerLinkActive="activeMenu">
+        <a class="nav-link" id="nav-link-1" routerLink="/recipe">Recipes</a>
       </li>
-      <li class="nav-item" [ngClass]="{'activeMenu': item2_active}">
-        <a class="nav-link" href="#" (click)="onSelect('shopping-list', $event)" id="nav-link-2">Shopping list</a>
+      <li class="nav-item" routerLinkActive="activeMenu">
+        <a class="nav-link" id="nav-link-2" routerLink="/shopping-list">Shopping list</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0 mr-5">
