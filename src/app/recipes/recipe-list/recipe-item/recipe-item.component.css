@@ -7,3 +7,7 @@
   height: 100px;
   width: 150px;
 }
+
+.active_item .card-body {
+  background-color: lightblue;
+}

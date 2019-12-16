@@ -36,6 +36,10 @@ export class RecipeService {
     return this._recipes;
   }
 
+  getRecipeByID(index: number) {
+    return this.recipes.slice()[index];
+  }
+
   set recipes(value: Recipe[]) {
     this._recipes = value;
   }
