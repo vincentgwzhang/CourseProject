@@ -29,9 +29,6 @@ export class RecipeService {
     )
   ];
 
-  @Output()
-  recipeSelected = new EventEmitter<Recipe>();
-
   get recipes(): Recipe[] {
     return this._recipes;
   }
@@ -42,10 +39,6 @@ export class RecipeService {
 
   set recipes(value: Recipe[]) {
     this._recipes = value;
-  }
-
-  triggerEvent(recipe: Recipe) {
-    this.recipeSelected.emit(recipe);
   }
 
   constructor(private _slService: ShoppingListService) {
