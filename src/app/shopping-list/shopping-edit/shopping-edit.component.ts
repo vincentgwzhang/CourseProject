@@ -12,18 +12,18 @@ import {Subscription} from "rxjs";
 export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   @ViewChild('form', {static: false}) form: NgForm;
-  editShoppingItemSubscription: Subscription;
-  editShoppingItemMode: boolean;
-  editShoppingItemIndex: number;
-  editShoppingItem : Ingredient;
-  shoppingListService: ShoppingListService;
+  private editShoppingItemSubscription: Subscription;
+  private editShoppingItemMode: boolean;
+  private editShoppingItemIndex: number;
+  private editShoppingItem: Ingredient;
+  private shoppingListService: ShoppingListService;
 
   constructor(private _shoppingListService: ShoppingListService) {
     this.shoppingListService = _shoppingListService;
   }
 
   ngOnInit() {
-    this.shoppingListService.shoppingItemEditSubject.subscribe(
+    this.editShoppingItemSubscription = this.shoppingListService.shoppingItemEditSubject.subscribe(
       (index: number) => {
         this.editShoppingItemMode = true;
         this.editShoppingItemIndex = index;
