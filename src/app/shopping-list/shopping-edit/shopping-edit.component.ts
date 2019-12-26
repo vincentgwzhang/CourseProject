@@ -11,7 +11,9 @@ import {Subscription} from "rxjs";
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
 
-  @ViewChild('form', {static: false}) form: NgForm;
+  @ViewChild('form', {static: false})
+  private form: NgForm;
+
   private editShoppingItemSubscription: Subscription;
   private editShoppingItemMode: boolean;
   private editShoppingItemIndex: number;
