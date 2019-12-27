@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Recipe} from "../recipe";
 import {RecipeService} from "../recipe.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {Subscription} from "rxjs";
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit,OnDestroy{
+export class RecipeListComponent implements OnInit, OnDestroy {
 
   recipes: Recipe[];
   recipeSubscription: Subscription;
