@@ -1,6 +1,5 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import {element} from "protractor";
-import {LoggingService} from "../logging.service";
+import {Component, OnInit} from '@angular/core';
+import {DataStorageService} from "../shared/data-storage.service";
 
 @Component({
   selector: 'app-header',
@@ -9,9 +8,17 @@ import {LoggingService} from "../logging.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private loggingService: LoggingService) {
+  constructor(private dataStorageService: DataStorageService) {
   }
 
   ngOnInit() {
+  }
+
+  uploadRecipes() {
+    this.dataStorageService.uploadRecipesToFirebase();
+  }
+
+  downloadRecipes() {
+    this.dataStorageService.getRecipesFromFirebase();
   }
 }

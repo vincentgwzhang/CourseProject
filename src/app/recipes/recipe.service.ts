@@ -11,26 +11,7 @@ export class RecipeService {
 
   public recipeSubject: Subject<Recipe[]> = new Subject<Recipe[]>();
 
-  private _recipes: Recipe[] = [
-    new Recipe(
-      'name 1',
-      'desc 1',
-      'assets/images/viewscope1/view1.jpeg',
-      [
-        new Ingredient('i1', 1),
-        new Ingredient('i2', 2),
-      ]
-    ),
-    new Recipe(
-      'name 2',
-      'desc 2',
-      'assets/images/viewscope1/view2.jpeg',
-      [
-        new Ingredient('i3', 3),
-        new Ingredient('i4', 4),
-      ]
-    )
-  ];
+  private _recipes: Recipe[] = [];
 
   get recipes(): Recipe[] {
     return this._recipes;
@@ -57,6 +38,7 @@ export class RecipeService {
 
   set recipes(value: Recipe[]) {
     this._recipes = value;
+    this.recipeSubject.next(this.recipes);
   }
 
   constructor(private _slService: ShoppingListService) {
