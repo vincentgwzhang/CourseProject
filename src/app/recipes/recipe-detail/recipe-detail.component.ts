@@ -13,11 +13,11 @@ export class RecipeDetailComponent implements OnInit {
   id: number;
 
   constructor(private _rsService: RecipeService,
-              private _route: ActivatedRoute,
+              private _activatedRoute: ActivatedRoute,
               private _router: Router) { }
 
   ngOnInit() {
-    this._route.params.subscribe(
+    this._activatedRoute.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
         this.recipe = this._rsService.getRecipeByID(this.id);
@@ -29,8 +29,12 @@ export class RecipeDetailComponent implements OnInit {
     this._rsService.appendToShoppingList(this.recipe);
   }
 
+  deleteThisRecipe() {
+    this._rsService.deleteRecipe(this.id);
+    this._router.navigate(['/recipe'], {relativeTo: this._activatedRoute});
+  }
+
   editThisRecipe() {
-    //this._router.navigate(['edit'], {relativeTo: this._route});
-    this._router.navigate(['../', this.id, 'edit'], {relativeTo: this._route});
+    this._router.navigate(['/recipe', this.id, 'edit'], {relativeTo: this._activatedRoute});
   }
 }
