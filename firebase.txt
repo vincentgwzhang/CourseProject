@@ -1,0 +1,31 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB6Q62oEq806PxHrxfoK-GsvVran6_hO_4",
+    authDomain: "weimianren.firebaseapp.com",
+    databaseURL: "https://weimianren.firebaseio.com",
+    projectId: "weimianren",
+    storageBucket: "weimianren.appspot.com",
+    messagingSenderId: "430794122699",
+    appId: "1:430794122699:web:6ab5099fb80cf683ac424e"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB6Q62oEq806PxHrxfoK-GsvVran6_hO_4",
+  authDomain: "weimianren.firebaseapp.com",
+  databaseURL: "https://weimianren.firebaseio.com",
+  projectId: "weimianren",
+  storageBucket: "weimianren.appspot.com",
+  messagingSenderId: "430794122699",
+  appId: "1:430794122699:web:6ab5099fb80cf683ac424e"
+};

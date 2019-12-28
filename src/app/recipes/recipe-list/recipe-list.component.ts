@@ -3,6 +3,7 @@ import {Recipe} from "../recipe";
 import {RecipeService} from "../recipe.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import {DataStorageService} from "../../shared/data-storage.service";
 
 @Component({
   selector: 'app-recipe-list',
@@ -16,7 +17,8 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   constructor(private _recipeService: RecipeService,
               private _router: Router,
-              private _route: ActivatedRoute) {
+              private _route: ActivatedRoute,
+              private dataStorageService: DataStorageService) {
     this.recipeSubscription = this._recipeService.recipeSubject.subscribe(
       (recipes: Recipe[]) => {
         this.recipes = recipes;
@@ -25,7 +27,9 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.recipes = this._recipeService.recipes;
+    if (this._recipeService.recipes.length == 0) {
+      this.dataStorageService.getRecipesFromFirebase();
+    }
   }
 
   addNewRecipe() {
