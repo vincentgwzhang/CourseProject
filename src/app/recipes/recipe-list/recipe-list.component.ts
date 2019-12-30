@@ -13,7 +13,7 @@ import {AuthService} from "../../auth/auth.service";
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
 
-  recipes: Recipe[];
+  recipes: Recipe[] = [];
   recipeSubscription: Subscription;
 
   constructor(private _recipeService: RecipeService,
@@ -29,7 +29,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (this.authService.isAuthenticated() && this._recipeService.recipes.length == 0) {
+    if (this.authService.isAuthenticated() && this.recipes.length == 0) {
       this.dataStorageService.getRecipesFromFirebase();
     }
   }
