@@ -43,6 +43,9 @@ export class AuthService {
   }
 
   getTocken() {
+    if (firebase.auth().currentUser == null) {
+      return null;
+    }
     firebase.auth().currentUser.getIdToken(true).then(
       (response: string) => {
         this.token = response;
