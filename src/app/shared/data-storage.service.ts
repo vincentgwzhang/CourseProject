@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {RecipeService} from "../recipes/recipe.service";
 import {Recipe} from "../recipes/recipe";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AuthService} from "../auth/auth.service";
 
@@ -21,12 +21,16 @@ export class DataStorageService {
   uploadRecipesToFirebase(): Observable<Recipe[]> {
     let recipes: Recipe[] = this.recipeService.recipes;
     let token: string = this.authService.getTocken();
-    return this.http.put<Recipe[]>(this.urlVersion1 + "?auth=" + token, recipes);
+
+    return this.http.put<Recipe[]>(this.urlVersion1, recipes, {
+      observe: 'body',
+      headers: new HttpHeaders()
+    });
   }
 
   getRecipesFromFirebase() : void {
     let token: string = this.authService.getTocken();
-    this.http.get<Recipe[]>(this.urlVersion1 + "?auth=" + token).subscribe(
+    this.http.get<Recipe[]>(this.urlVersion1).subscribe(
       (recipes: Recipe[]) => {
         for (let recipe of recipes) {
           if (recipe['ingredients'] == null || recipe['ingredients'] == undefined || recipe['ingredients'].length == 0) {

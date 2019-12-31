@@ -13,10 +13,12 @@ import {ShoppingEditComponent} from './shopping-list/shopping-edit/shopping-edit
 import {DropdownDirective} from './shared/dropdown.directive';
 import {RecipeStartComponent} from './recipes/recipe-start/recipe-start.component';
 import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { SignupComponent } from './auth/signup/signup.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import {AppRountingModule} from "./app-rounting.module";
+import {AuthInterceptor} from "./shared/auth-interceptor";
+import {LoggingInterceptor} from "./shared/logging.interceptor";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import {AppRountingModule} from "./app-rounting.module";
     AppRountingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
